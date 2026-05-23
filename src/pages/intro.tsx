@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "../components/language-switcher";
 import { Logo } from "../components/logo";
+import { Link } from "../router";
 
 export function Intro() {
 	const { t } = useTranslation();
@@ -10,7 +11,7 @@ export function Intro() {
 			<LanguageSwitcher />
 			<Logo />
 			<p>{t("promises")}</p>
-			<a href="survey">{t("proceed")}</a>
+			<Link href="/survey">{t("proceed")}</Link>
 		</div>
 	);
 }

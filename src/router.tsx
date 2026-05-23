@@ -16,6 +16,24 @@ function stripBase(pathname: string): string {
 	return pathname.startsWith(base) ? pathname.slice(base.length) || "/" : pathname;
 }
 
+/** Navigate programmatically to an app route, e.g. navigate('/survey') */
+export function navigate(path: string) {
+	navigation.navigate(base + path);
+}
+
+/** Drop-in replacement for <a> that automatically prepends the base path */
+export function Link({
+	href,
+	children,
+	...props
+}: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) {
+	return (
+		<a href={base + href} {...props}>
+			{children}
+		</a>
+	);
+}
+
 export function Router() {
 	const [pathname, setPathname] = useState(() => stripBase(window.location.pathname));
 

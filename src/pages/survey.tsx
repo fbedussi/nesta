@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "../router";
 
 export function Survey() {
 	const { t } = useTranslation();
@@ -6,7 +7,7 @@ export function Survey() {
 	return (
 		<div>
 			<p>{t("survey")}</p>
-			<a href="/">{t("proceed")}</a>
+			<Link href="/">{t("proceed")}</Link>
 		</div>
 	);
 }
