@@ -1,5 +1,6 @@
 import type { MouseEventHandler } from "react";
 import { useTranslation } from "react-i18next";
+import { defaultLanguage } from "../i18n";
 
 export const LanguageSwitcher = () => {
 	const { i18n } = useTranslation();
@@ -17,14 +18,16 @@ export const LanguageSwitcher = () => {
 				name="language"
 				value="it"
 				onClick={switchLanguage}
+				defaultChecked={defaultLanguage === "it"}
 			/>
-			<label htmlFor="es">Italiano</label>
+			<label htmlFor="it">Italiano</label>
 			<input
 				type="radio"
 				id="en"
 				name="language"
 				value="en"
 				onClick={switchLanguage}
+				defaultChecked={defaultLanguage === "en"}
 			/>
 			<label htmlFor="en">English</label>
 		</div>
