@@ -83,37 +83,44 @@ function createIndexedDBStorage<S>(
 }
 
 const initialState: Model = {
-	surveyComplete: false,
+	surveyCompleted: false,
 	birdName: "",
 	photos: [],
 };
 
-// TODO: enable this to persit the store in IndexedDB. For now, we can use devtools to inspect the state and actions.
-// export const useStore = create<
-// 	Model,
-// 	[["zustand/persist", unknown], ["zustand/devtools", never]]
-// >(
-// 	persist(
-// 		devtools(() => initialState),
-// 		{
-// 			name: "nesta-store",
-// 			version: 0.1,
-// 			storage: createIndexedDBStorage("nesta-db", "nesta-idb-store"),
-// 		},
-// 	),
-// );
+export const useStoreWithPersistance = create<
+	Model,
+	[["zustand/persist", unknown], ["zustand/devtools", never]]
+>(
+	persist(
+		devtools(() => initialState),
+		{
+			name: "nesta-store",
+			version: 0.1,
+			storage: createIndexedDBStorage("nesta-db", "nesta-idb-store"),
+		},
+	),
+);
 
 export const useStore = create<Model, [["zustand/devtools", never]]>(
 	devtools(() => initialState),
 );
 
 export const selectors = {
+	surveyCompleted: (state: Model) => state.surveyCompleted,
 	birdName: (state: Model) => state.birdName,
 	photos: (state: Model) => state.photos,
+	streak: (state: Model) => new Set([...state.photos.map(getShotDay)]).size,
 };
 
 export const actions = {
+	setSurveyCompleted: () => useStore.setState({ surveyCompleted: true }),
 	setBirdName: (name: string) => useStore.setState({ birdName: name }),
 	addPhoto: (photo: Photo) =>
 		useStore.setState((state) => ({ photos: [...state.photos, photo] })),
 };
+
+function getShotDay(photo: Photo): string {
+	const date = new Date(photo.date);
+	return date.toISOString().split("T")[0];
+}

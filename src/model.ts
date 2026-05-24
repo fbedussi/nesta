@@ -1,5 +1,5 @@
 export type Model = {
-	surveyComplete: boolean;
+	surveyCompleted: boolean;
 	birdName: string;
 	photos: Photo[];
 };

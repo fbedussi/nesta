@@ -1,19 +1,35 @@
 import { useEffect, useState } from "react";
 import { NotFound } from "./pages/404";
+import { Birth } from "./pages/birth";
+import { Home } from "./pages/home";
 import { Intro } from "./pages/intro";
+import { Journey } from "./pages/journey";
+import { Loading } from "./pages/loading";
+import { Profile } from "./pages/profile";
+import { Sos } from "./pages/sos";
 import { Survey } from "./pages/survey";
+import { TakePhoto } from "./pages/take-photo";
 
 type RouteComponent = React.ComponentType;
 
 const routes: Record<string, RouteComponent> = {
-	"/": Intro,
+	"/": Home,
+	"/intro": Intro,
 	"/survey": Survey,
+	"/loading": Loading,
+	"/profile": Profile,
+	"/birth": Birth,
+	"/journey": Journey,
+	"/sos": Sos,
+	"/take-photo": TakePhoto,
 };
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 function stripBase(pathname: string): string {
-	return pathname.startsWith(base) ? pathname.slice(base.length) || "/" : pathname;
+	return pathname.startsWith(base)
+		? pathname.slice(base.length) || "/"
+		: pathname;
 }
 
 /** Navigate programmatically to an app route, e.g. navigate('/survey') */
@@ -35,7 +51,9 @@ export function Link({
 }
 
 export function Router() {
-	const [pathname, setPathname] = useState(() => stripBase(window.location.pathname));
+	const [pathname, setPathname] = useState(() =>
+		stripBase(window.location.pathname),
+	);
 
 	useEffect(() => {
 		const controller = new AbortController();

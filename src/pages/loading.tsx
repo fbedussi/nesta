@@ -1,13 +1,13 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "../router";
 
-export function Survey() {
+export function Loading() {
 	const { t } = useTranslation();
 
 	return (
 		<div>
-			<p>{t("survey")}</p>
-			<Link href="/loading">{t("proceed")}</Link>
+			<h1>loading</h1>
+			<Link href="/profile">{t("proceed")}</Link>
 		</div>
 	);
 }

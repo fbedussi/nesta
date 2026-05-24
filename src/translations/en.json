@@ -1,5 +1,11 @@
 {
-    "promises": "Promises",
-    "proceed": "proceed",
-    "survey": "Survey"
+	"promises": "Promises",
+	"proceed": "proceed",
+	"survey": "Survey",
+	"take photo": "Take Photo",
+	"sos": "SOS",
+	"journey": "Journey",
+	"streak": "Streak",
+	"birdNamePlaceholder": "Bird Name",
+	"home": "Home"
 }
