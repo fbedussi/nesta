@@ -7,5 +7,52 @@
 	"journey": "Journey",
 	"streak": "Streak",
 	"birdNamePlaceholder": "Bird Name",
-	"home": "Home"
+	"home": "Home",
+	"promise1": "If today you had a bad moment, it doesn't change anything for us. Relapses are part of the journey. Nesta doesn't punish you, it welcomes you.",
+	"promise2": "Forget about impossible goals or stressful challenges like &quote;a month without touching your hands&quote;. We will work on small daily milestones, one day at a time.",
+	"promise3": "Biting your nails is not a vice, it's a response from your body. We will help you discover if you do it for stress, boredom or love of detail, finding your ideal solution.",
+	"promise4": "Nesta is a safe and protected place. Here you can move, make mistakes and slow down without ever hurting yourself. Together with Nesto, your virtual companion, you will build your healing nest.",
+	"promise5": "Skin heals quickly and nails grow back. We will help you notice the micro-changes that no one else sees, giving you back the pride of showing your hands.",
+	"introCta": "Do you trust us?",
+	"surveyTitle": "What do your hands say?",
+
+	"question1_question": "Observe your days: in which of these moments do your hands approach your mouth more often?",
+	"question1_answer1": "When I feel under pressure, anxious or I have to concentrate a lot (studying, working, deadlines).",
+	"question1_answer2": "In moments of emptiness or boredom (while watching TV, on public transport, driving or waiting).",
+	"question1_answer3": "As soon as I feel an irregularity by touch: a lifted cuticle, a rough corner or a broken nail.",
+	"question1_answer4": "Honestly, there is no specific moment, it happens continuously and everywhere without me thinking about it.",
+
+	"question2_question": "Usually, at what precise moment do you realize you have given in to the impulse?",
+	"question2_answer1": "I feel the impulse rising sharply and I try to fight it, but in the end I give in to calm down.",
+	"question2_answer2": "I realize it suddenly, when I already have my fingers in my mouth or I have already started biting.",
+	"question2_answer3": "I only notice it when it's too late: when I feel pain, burning or see blood coming out.",
+	"question2_answer4": "I look at the nail, I notice the defect and I rationally decide to \"fix it\" using my teeth.",
+
+	"question3_question": "What do you feel immediately after damaging a nail or a cuticle?",
+	"question3_answer1": "A strong sense of guilt, frustration or anger towards myself for losing control.",
+	"question3_answer2": "A sense of relief or momentary relaxation, as if I had released tension.",
+	"question3_answer3": "Annoyance for the aesthetic damage done, which often pushes me to want to \"even out\" the other nails as well.",
+	"question3_answer4": "I hardly care anymore, it's a normal gesture that is so much part of me that it leaves me indifferent.",
+
+	"question4_question": "How many years has this habit been part of your days?",
+	"question4_answer1": "It's a recent thing, started in the last year or linked to a specific life change.",
+	"question4_answer2": "For a few years, but it goes in alternating periods: sometimes I have perfect hands, other times I completely relapse.",
+	"question4_answer3": "Practically forever, since I was a child.",
+
+	"question5_question": "Think about the day when you will have total control of your hands. What milestone will make you most proud?",
+	"question5_answer1": "Being able to gesture and speak in public without hiding my fists or feeling ashamed.",
+	"question5_answer2": "Stop feeling that constant and annoying pain, burning or bleeding in my fingers.",
+	"question5_answer3": "Finally seeing my hands cared for, being able to put on nail polish or get a manicure.",
+	"question5_answer4": "Having had to prove to myself that I can manage stress in a healthier and more peaceful way.",
+
+	"loading": "we are processing the data",
+
+	"profile_stress_description": "Your hands move when your mind runs fast. When pressure increases or you have to concentrate intensely, your body looks for a vent to release the energy. It just means you have a sensitive soul, that processes the world in a deep way.",
+	"profile_stress_message": "Your mind does great things, but sometimes it gets overloaded. From now on I'm here to remind you to breathe and protect your hands while you think.",
+	"profile_automatic_description": "For you, the gesture is a silent journey that you often don't even notice. It happens in moments of emptiness or boredom. Your hands go 'exploring' on their own when attention drops, turning relaxation into an unconscious automatism.",
+	"profile_automatic_message": "While you relax or watch a movie, I'll keep an eye on your hands for you. We'll find something fun to keep them busy, I promise!",
+	"profile_perfectionist_description": "Your need is for symmetry and order. Your trigger is tactile: just a lifted cuticle or a broken nail can trigger the magnetic need to 'fix it'. You try to repair a defect, but your teeth end up worsening the design.",
+	"profile_perfectionist_message": "Your attention to detail is a superpower. From now on we will use it to nourish and care for the skin, instead of filing it with your teeth. Let's rebuild together!",
+
+	"_": ""
 }

@@ -86,6 +86,13 @@ const initialState: Model = {
 	surveyCompleted: false,
 	birdName: "",
 	photos: [],
+	surveyAnswers: {
+		"1": null,
+		"2": null,
+		"3": null,
+		"4": null,
+		"5": null,
+	},
 };
 
 export const useStoreWithPersistance = create<
@@ -111,6 +118,70 @@ export const selectors = {
 	birdName: (state: Model) => state.birdName,
 	photos: (state: Model) => state.photos,
 	streak: (state: Model) => new Set([...state.photos.map(getShotDay)]).size,
+	surveyCompletedPercentage: (state: Model) => {
+		const answers = Object.values(state.surveyAnswers);
+		const totalQuestions = answers.length;
+		const answeredQuestions = answers.filter(
+			(answer) => answer !== null,
+		).length;
+
+		return Math.round((answeredQuestions / totalQuestions) * 100);
+	},
+	profile: (state: Model) => {
+		type Traits = "stress" | "automatic" | "perfectionist";
+		const matrix: Record<string, Record<string, Traits>> = {
+			"1": {
+				"1": "stress",
+				"2": "automatic",
+				"3": "perfectionist",
+				"4": "automatic",
+			},
+			"2": {
+				"1": "stress",
+				"2": "automatic",
+				"3": "automatic",
+				"4": "perfectionist",
+			},
+			"3": {
+				"1": "stress",
+				"2": "stress",
+				"3": "perfectionist",
+				"4": "automatic",
+			},
+		};
+		const score: Record<Traits, number> = {
+			stress: 0,
+			automatic: 0,
+			perfectionist: 0,
+		};
+
+		Object.entries(state.surveyAnswers)
+			.slice(0, 3)
+			.forEach(([questionId, answerId]) => {
+				if (!answerId) {
+					return;
+				}
+
+				const trait = matrix[questionId][answerId];
+				score[trait]++;
+			});
+
+		let results = Object.entries(score).toSorted((a, b) => b[1] - a[1]);
+		if (results[0] === results[1]) {
+			const answerId = state.surveyAnswers["1"];
+
+			if (!answerId) {
+				return;
+			}
+
+			const trait = matrix["1"][answerId];
+			score[trait]++;
+
+			results = Object.entries(score).toSorted((a, b) => b[1] - a[1]);
+		}
+
+		return results[0][0];
+	},
 };
 
 export const actions = {
@@ -118,6 +189,13 @@ export const actions = {
 	setBirdName: (name: string) => useStore.setState({ birdName: name }),
 	addPhoto: (photo: Photo) =>
 		useStore.setState((state) => ({ photos: [...state.photos, photo] })),
+	setSurveyAnswer: (questionId: number, answerId: number) =>
+		useStore.setState((state) => ({
+			surveyAnswers: {
+				...state.surveyAnswers,
+				[questionId]: answerId,
+			},
+		})),
 };
 
 function getShotDay(photo: Photo): string {

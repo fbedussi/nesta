@@ -7,5 +7,52 @@
 	"journey": "Percorso",
 	"streak": "Streak",
 	"birdNamePlaceholder": "Nome dell'uccello",
-	"home": "Home"
+	"home": "Home",
+	"promise1": "Se oggi hai avuto un momento no, per noi non cambia nulla. Le ricadute fanno parte del viaggio. Nesta non ti punisce, ti accoglie.",
+	"promise2": "Dimentica gli obiettivi impossibili o le sfide stressanti da &quote;un mese senza toccarti le mani&quote;. Lavoreremo su piccoli traguardi quotidiani, un giorno alla volta.",
+	"promise3": "Mangiarsi le unghie non è un vizio, è una risposta del tuo corpo. Ti aiuteremo a scoprire se lo fai per stress, per noia o per amore del dettaglio, trovando la tua soluzione ideale.",
+	"promise4": "Nesta è un luogo sicuro e protetto. Qui puoi muoverti, sbagliare e rallentare senza mai farti del male. Insieme a Nesto, il tuo compagno virtuale, costruirai il tuo nido di guarigione.",
+	"promise5": "La pelle guarisce in fretta e le unghie ricrescono. Ti aiuteremo a notare i micro-cambiamenti quotidiani che nessun altro vede, restituendoti l'orgoglio di mostrare le tue mani.",
+	"introCta": "Ti fidi?",
+	"surveyTitle": "cosa dicono le tue mani?",
+
+	"question1_question": "Osserva le tue giornate: in quale di questi momenti le tue mani si avvicinano alla bocca più spesso?",
+	"question1_answer1": "Quando mi sento sotto pressione, in ansia o devo concentrarmi molto (studio, lavoro, scadenze).",
+	"question1_answer2": "Nei momenti di vuoto o noia (mentre guardo la TV, sono sui mezzi pubblici, guido o aspetto).",
+	"question1_answer3": "Appena avverto col tatto un'irregolarità: una pellicina sollevata, un angolo ruvido o un'unghia spezzata.",
+	"question1_answer4": "Sinceramente non c'è un momento preciso, succede continuamente e ovunque senza che io ci pensi.",
+
+	"question2_question": "Di solito, in quale preciso momento ti rendi conto di aver ceduto all'impulso?",
+	"question2_answer1": "Sento l'impulso salire nettamente e provo a combatterlo, ma alla fine cedo per calmarmi.",
+	"question2_answer2": "Me ne accorgo all'improvviso, quando ho già le dita in bocca o ho già iniziato a mordere.",
+	"question2_answer3": "Ci faccio caso solo quando è troppo tardi: quando sento dolore, bruciore o vedo uscire del sangue.",
+	"question2_answer4": "Guardo l'unghia, noto il difetto e decido razionalmente di \"sistemarla\" usando i denti.",
+
+	"question3_question": "Cosa provi subito dopo haber danneggiato un'unghia o una pellicina?",
+	"question3_answer1": "Un forte senso di colpa, frustrazione o rabbia verso me stesso/a per aver perso il controllo.",
+	"question3_answer2": "Un senso di sollievo o rilassamento momentaneo, come se avessi scaricato una tensione.",
+	"question3_answer3": "Fastidio per il danno estetico fatto, che spesso mi spinge a voler \"pareggiare\" anche le altre unghie.",
+	"question3_answer4": "Non ci bado quasi più, ormai è un gesto normale che fa talmente parte di me da lasciarmi indifferente.",
+
+	"question4_question": "Da quanti anni questa abitudine fa parte delle tue giornate?",
+	"question4_answer1": "È una cosa recente, iniziata nell'ultimo anno o legata a un cambio di vita specifico.",
+	"question4_answer2": "Da qualche anno, ma va a periodi alterni: a volte ho mani perfette, altre volte ricado completamente.",
+	"question4_answer3": "Praticamente da sempre, fin da quando ero bambino/a",
+
+	"question5_question": "Pensa al giorno in cui avrai il controllo totale delle tue mani. Quale traguardo ti renderà più orgoglioso/a?",
+	"question5_answer1": "Poter gesticolare e parlare in pubblico senza nascondere i pugni o provare vergogna.",
+	"question5_answer2": "Smettere di provare quel costante e fastidioso dolore, bruciore o sanguinamento alle dita.",
+	"question5_answer3": "Vedere finalmente le mie mani curate, poter mettere lo smalto o fare una manicure.",
+	"question5_answer4": "Aver dovuto dimostrare a me stesso/a che posso gestire lo stress in modo più sano e pacifico.",
+
+	"loading": "stiamo elaborando i dati",
+
+	"profile_stress_description": "Le tue mani si muovono quando la tua mente corre veloce. Quando la pressione aumenta o devi concentrarti intensamente, il tuo corpo cerca una valvola di sfogo per scaricare l'energia. Significa solo che hai un'anima sensibile, che elabora il mondo in modo profondo.",
+	"profile_stress_message": "La tua mente fa grandi cose, ma a volte si sovraccarica. Da oggi ci sono io qui a ricordarti di respirare e a proteggere le tue mani mentre tu pensi.",
+	"profile_automatic_description": "Per te il gesto è un viaggio silenzioso di cui spesso non ti accorgi. Succede nei momenti di vuoto o noia. Le tue mani vanno 'in avanscoperta' da sole quando l'attenzione si abbassa, trasformando il relax in un automatismo inconscio.",
+	"profile_automatic_message": "Mentre tu ti rilassi o guardi un film, io terrò d'occhio le tue mani per te. Troveremo qualcosa di divertente per tenerle occupate, promesso!",
+	"profile_perfectionist_description": "Il tuo è un bisogno di simmetria e ordine. Il tuo trigger è tattile: basta una pellicina sollevata o un'unghia spezzata per far scattare il bisogno magnetico di 'sistemarla'. Cerchi di riparare un difetto, ma i denti finiscono per peggiorare il disegno.",
+	"profile_perfectionist_message": "La tua attenzione ai dettagli è un superpotere. Da oggi la useremo per nutrire e curare la pelle, invece di limarla con i denti. Ricostruiamo insieme!",
+
+	"_": ""
 }
