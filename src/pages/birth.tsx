@@ -12,7 +12,7 @@ export function Birth() {
 
 	return (
 		<div>
-			<h1>Birtth</h1>
+			<h1>Birth</h1>
 			<Link href="/">{t("proceed")}</Link>
 		</div>
 	);

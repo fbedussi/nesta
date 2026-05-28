@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import type { PersistStorage, StorageValue } from "zustand/middleware/persist";
-import type { Model, Photo } from "./model";
+import type { Model, Photo, Traits } from "./model";
 
 function openDatabase(
 	databaseName: string,
@@ -127,8 +127,7 @@ export const selectors = {
 
 		return Math.round((answeredQuestions / totalQuestions) * 100);
 	},
-	profile: (state: Model) => {
-		type Traits = "stress" | "automatic" | "perfectionist";
+	profile: (state: Model): Traits | undefined => {
 		const matrix: Record<string, Record<string, Traits>> = {
 			"1": {
 				"1": "stress",
@@ -166,8 +165,11 @@ export const selectors = {
 				score[trait]++;
 			});
 
-		let results = Object.entries(score).toSorted((a, b) => b[1] - a[1]);
-		if (results[0] === results[1]) {
+		let results = Object.entries(score).toSorted((a, b) => b[1] - a[1]) as [
+			Traits,
+			number,
+		][];
+		if (results[0][1] === results[1][1]) {
 			const answerId = state.surveyAnswers["1"];
 
 			if (!answerId) {
@@ -177,7 +179,10 @@ export const selectors = {
 			const trait = matrix["1"][answerId];
 			score[trait]++;
 
-			results = Object.entries(score).toSorted((a, b) => b[1] - a[1]);
+			results = Object.entries(score).toSorted((a, b) => b[1] - a[1]) as [
+				Traits,
+				number,
+			][];
 		}
 
 		return results[0][0];
