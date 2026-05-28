@@ -63,5 +63,9 @@
 	"pickImage": "scatta una foto",
 	"save": "salva",
 
+	"left": "sinistra",
+	"right": "destra",
+	"handImage": "immagine mano {{ hand }} del {{ day }}",
+
 	"_": ""
 }

@@ -15,8 +15,11 @@ export type Photo = {
 	url: string;
 	alt: string;
 	date: ISODateString;
+	hand: Hand;
 };
 
 export type ISODateString = string; // e.g. "2024-06-01T12:00:00Z"
 
 export type Traits = "stress" | "automatic" | "perfectionist";
+
+export type Hand = "left" | "right";

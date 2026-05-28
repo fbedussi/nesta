@@ -57,11 +57,15 @@
 	"percentageOfPeople": "percentage of people",
 	"profileNotFound": "profile not found",
 	"yourAttentionToDetails": "Your attention to detail is a superpower. From now on we will use it to nourish and care for the skin, instead of filing it with your teeth. Let's rebuild together!",
-	"letsStar": "let's start",
 
+	"letsStar": "let's start",
 	"changeImage": "take a new photo",
 	"pickImage": "take a photo",
 	"save": "save",
+
+	"left": "left",
+	"right": "rigth",
+	"handImage": "{{ hand }} hand image of {{ day }}",
 
 	"_": ""
 }
