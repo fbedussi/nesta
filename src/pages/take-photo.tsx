@@ -8,7 +8,7 @@ export function TakePhoto() {
 
 	const [imageSrc, setImageSrc] = useState<string>("");
 	const [imageFile, setImageFile] = useState<File | null>(null);
-	const [imageLoading, setImageLoading] = useState(false);
+	// const [imageLoading, setImageLoading] = useState(false);
 
 	const disableSaveButton = !imageFile;
 
@@ -30,14 +30,14 @@ export function TakePhoto() {
 							throw new Error("No image file");
 						}
 
-						setImageLoading(true);
+						// setImageLoading(true);
 
 						const resizedImage = await resizeImage(file, 960, 960);
 
 						setImageFile(resizedImage);
 						const src = URL.createObjectURL(resizedImage);
 						setImageSrc(src);
-						setImageLoading(false);
+						// setImageLoading(false);
 					}}
 				/>
 

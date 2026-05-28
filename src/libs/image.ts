@@ -8,7 +8,7 @@ export const resizeImage = (
 
 		const reader = new FileReader();
 
-		reader.addEventListener("loadend", (e) => {
+		reader.addEventListener("loadend", () => {
 			const image = new Image();
 
 			image.addEventListener("load", () => {
