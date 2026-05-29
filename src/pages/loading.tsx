@@ -10,7 +10,7 @@ export function Loading() {
 			navigate("/profile");
 		}, 2000);
 		return () => clearTimeout(timeoutId);
-	});
+	}, []);
 
 	return (
 		<div>
