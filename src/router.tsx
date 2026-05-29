@@ -14,6 +14,7 @@ type RouteComponent = React.ComponentType;
 
 const routes: Record<string, RouteComponent> = {
 	"/": Home,
+	"/home": Home,
 	"/intro": Intro,
 	"/survey": Survey,
 	"/loading": Loading,

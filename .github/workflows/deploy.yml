@@ -34,6 +34,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Test
+        run: npm run test
+
       - name: Copy index.html to 404.html for SPA routing
         run: cp dist/index.html dist/404.html
 
@@ -42,8 +45,11 @@ jobs:
         with:
           path: dist
 
+  test:
+    uses: ./.github/workflows/playwright.yml
+
   deploy:
-    needs: build
+    needs: [build, test]
     runs-on: ubuntu-latest
     permissions:
       pages: write

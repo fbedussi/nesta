@@ -8,6 +8,9 @@
 		"check": "tsc --noEmit",
 		"build": "tsc -b && vite build",
 		"lint": "biome lint .",
+		"test": "node --experimental-strip-types --test src/**/*.test.ts",
+		"e2e": "npx playwright test",
+		"e2e:open": "npx playwright test --ui",
 		"preview": "vite preview"
 	},
 	"dependencies": {
@@ -20,9 +23,10 @@
 	"devDependencies": {
 		"@babel/core": "^7.29.0",
 		"@biomejs/biome": "2.4.15",
+		"@playwright/test": "^1.60.0",
 		"@rolldown/plugin-babel": "^0.2.3",
 		"@types/babel__core": "^7.20.5",
-		"@types/node": "^24.12.3",
+		"@types/node": "^24.12.4",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
 		"@vitejs/plugin-react": "^6.0.1",
