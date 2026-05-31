@@ -9,7 +9,7 @@
 	"birdNamePlaceholder": "Nome dell'uccello",
 	"home": "Home",
 	"promise1": "Se oggi hai avuto un momento no, per noi non cambia nulla. Le ricadute fanno parte del viaggio. Nesta non ti punisce, ti accoglie.",
-	"promise2": "Dimentica gli obiettivi impossibili o le sfide stressanti da &quote;un mese senza toccarti le mani&quote;. Lavoreremo su piccoli traguardi quotidiani, un giorno alla volta.",
+	"promise2": "Dimentica gli obiettivi impossibili o le sfide stressanti da \"un mese senza toccarti le mani\". Lavoreremo su piccoli traguardi quotidiani, un giorno alla volta.",
 	"promise3": "Mangiarsi le unghie non è un vizio, è una risposta del tuo corpo. Ti aiuteremo a scoprire se lo fai per stress, per noia o per amore del dettaglio, trovando la tua soluzione ideale.",
 	"promise4": "Nesta è un luogo sicuro e protetto. Qui puoi muoverti, sbagliare e rallentare senza mai farti del male. Insieme a Nesto, il tuo compagno virtuale, costruirai il tuo nido di guarigione.",
 	"promise5": "La pelle guarisce in fretta e le unghie ricrescono. Ti aiuteremo a notare i micro-cambiamenti quotidiani che nessun altro vede, restituendoti l'orgoglio di mostrare le tue mani.",
@@ -66,6 +66,8 @@
 	"left": "sinistra",
 	"right": "destra",
 	"handImage": "immagine mano {{ hand }} del {{ day }}",
+
+	"ourPromises": "le nostre promesse",
 
 	"_": ""
 }

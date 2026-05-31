@@ -1,0 +1,11 @@
+.text {
+	font-family: var(--font-rounded-sans);
+	font-size: clamp(2.8rem, 12vw, 3.8rem);
+	font-weight: 900;
+	font-style: italic;
+	color: rgb(74, 144, 226);
+	letter-spacing: -0.02em;
+	line-height: 1;
+	text-shadow: rgba(74, 144, 226, 0.125) 0px 2px 4px;
+	margin: 0px;
+}

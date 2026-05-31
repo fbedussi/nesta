@@ -13,7 +13,7 @@ export function Survey() {
 
 	return (
 		<div>
-			<p>{t("survey")}</p>
+			<p>{t("surveyTitle")}</p>
 
 			<div className={styles.questions}>
 				{numberOfAnswersPerQuestion.map((numberOfAnswers, index) => (

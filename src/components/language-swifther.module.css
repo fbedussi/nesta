@@ -1,0 +1,43 @@
+@import "open-props/durations";
+
+.container {
+	background-color: var(--brown-1);
+	border-radius: var(--radius-round);
+	border: solid var(--border-size-1) var(--brown-2);
+	box-shadow: var(--shadow-2);
+	padding: var(--size-1);
+	position: relative;
+	width: max-content;
+	font-size: 1.1rem;
+	display: flex;
+
+	input {
+		display: none;
+	}
+
+	label {
+		padding: var(--size-2) var(--size-3);
+		position: relative;
+		z-index: 2;
+		background-color: transparent;
+		display: block;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		z-index: 1;
+		left: var(--size-1);
+		top: var(--size-1);
+		display: block;
+		width: calc(50% - (2 * var(--size-1)));
+		height: calc(100% - (2 * var(--size-1)));
+		background-color: var(--accent-color);
+		border-radius: var(--radius-round);
+		transition: transform var(--duration-gentle-1);
+	}
+
+	&:has(input:last-of-type:checked)::before {
+		transform: translateX(calc(100% + var(--size-1)));
+	}
+}

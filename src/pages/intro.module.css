@@ -1,0 +1,33 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	gap: var(--size-4);
+}
+
+.promisees {
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-3);
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.title {
+	color: var(--orange-7);
+	font-size: var(--font-size-3);
+	text-transform: uppercase;
+	font-weight: var(--font-weight-7);
+}
+
+.slider-wrapper {
+	border-radius: var(--radius-4);
+	background-color: var(--brown-1);
+	border: solid var(--border-size-1) var(--sand-4);
+	width: 100%;
+	font-size: var(--font-size-fluid-1);
+	color: var(--brown-8);
+}

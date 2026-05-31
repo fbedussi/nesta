@@ -1,9 +1,9 @@
-import logo from '../assets/react.svg'
+import styles from "./logo.module.css";
 
-export function Logo() {
-    return (
-        <div>
-            <img src={logo} alt="Nesta Logo" />
-        </div>
-    );
+export function Logo({ size }: { size: number }) {
+	return (
+		<div style={{ fontSize: `var(--font-size-${size})` }}>
+			<span className={styles.text}>NESTA</span> 🐦
+		</div>
+	);
 }

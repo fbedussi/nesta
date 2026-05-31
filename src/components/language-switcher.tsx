@@ -1,6 +1,7 @@
 import type { MouseEventHandler } from "react";
 import { useTranslation } from "react-i18next";
 import { defaultLanguage } from "../i18n";
+import styles from "./language-swifther.module.css";
 
 export const LanguageSwitcher = () => {
 	const { i18n } = useTranslation();
@@ -11,7 +12,7 @@ export const LanguageSwitcher = () => {
 	};
 
 	return (
-		<div>
+		<div className={styles.container}>
 			<input
 				type="radio"
 				id="it"
@@ -20,7 +21,9 @@ export const LanguageSwitcher = () => {
 				onClick={switchLanguage}
 				defaultChecked={defaultLanguage === "it"}
 			/>
-			<label htmlFor="it">Italiano</label>
+			<label htmlFor="it" aria-label="Italiano">
+				🇮🇹
+			</label>
 			<input
 				type="radio"
 				id="en"
@@ -29,7 +32,9 @@ export const LanguageSwitcher = () => {
 				onClick={switchLanguage}
 				defaultChecked={defaultLanguage === "en"}
 			/>
-			<label htmlFor="en">English</label>
+			<label htmlFor="en" aria-label="English">
+				🇬🇧
+			</label>
 		</div>
 	);
 };

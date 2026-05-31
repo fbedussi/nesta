@@ -14,7 +14,10 @@ const resources = {
 	},
 };
 
-export const defaultLanguage: "it" | "en" = "it";
+export const defaultLanguage: "it" | "en" =
+	navigator.language.split("-")[0].toLowerCase() === "it" ? "it" : "en";
+
+document.documentElement.lang = defaultLanguage;
 
 i18next.use(initReactI18next).init({
 	resources,

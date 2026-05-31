@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { LanguageSwitcher } from "../components/language-switcher";
 import { Menu } from "../components/menu";
 import { navigate } from "../router";
 import { actions, selectors, useStore } from "../store";
@@ -21,7 +20,6 @@ export function Home() {
 
 	return (
 		<div>
-			<LanguageSwitcher />
 			<div>disegno uccellino nel nido</div>
 			<input
 				type="text"
