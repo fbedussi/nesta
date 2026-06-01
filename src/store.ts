@@ -83,6 +83,7 @@ function createIndexedDBStorage<S>(
 }
 
 const initialState: Model = {
+	storeReady: false,
 	surveyCompleted: false,
 	birdName: "",
 	photos: [],
@@ -95,7 +96,7 @@ const initialState: Model = {
 	},
 };
 
-export const useStoreWithPersistance = create<
+export const useStore = create<
 	Model,
 	[["zustand/persist", unknown], ["zustand/devtools", never]]
 >(
@@ -105,15 +106,25 @@ export const useStoreWithPersistance = create<
 			name: "nesta-store",
 			version: 0.1,
 			storage: createIndexedDBStorage("nesta-db", "nesta-idb-store"),
+			onRehydrateStorage: () => {
+				return (state, error) => {
+					if (error) {
+						console.log("an error happened during hydration", error);
+					} else if (state) {
+						useStore.setState({ ...state, storeReady: true });
+					}
+				};
+			},
 		},
 	),
 );
 
-export const useStore = create<Model, [["zustand/devtools", never]]>(
-	devtools(() => initialState),
-);
+// export const useStore = create<Model, [["zustand/devtools", never]]>(
+// 	devtools(() => ({...initialState, storeReady: true})),
+// );
 
 export const selectors = {
+	ready: (state: Model) => state.storeReady,
 	surveyCompleted: (state: Model) => state.surveyCompleted,
 	birdName: (state: Model) => state.birdName,
 	photos: (state: Model) => state.photos,

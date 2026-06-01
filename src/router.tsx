@@ -5,10 +5,12 @@ import { Home } from "./pages/home";
 import { Intro } from "./pages/intro";
 import { Journey } from "./pages/journey";
 import { Loading } from "./pages/loading";
+import { LoadingApp } from "./pages/loadingApp";
 import { Profile } from "./pages/profile";
 import { Sos } from "./pages/sos";
 import { Survey } from "./pages/survey";
 import { TakePhoto } from "./pages/take-photo";
+import { selectors, useStore } from "./store";
 
 type RouteComponent = React.ComponentType;
 
@@ -55,6 +57,7 @@ export function Router() {
 	const [pathname, setPathname] = useState(() =>
 		stripBase(window.location.pathname),
 	);
+	const ready = useStore(selectors.ready);
 
 	useEffect(() => {
 		const controller = new AbortController();
@@ -85,5 +88,6 @@ export function Router() {
 	}, []);
 
 	const Page = routes[pathname] ?? NotFound;
-	return <Page />;
+
+	return ready ? <Page /> : <LoadingApp />;
 }

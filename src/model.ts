@@ -1,4 +1,5 @@
 export type Model = {
+	storeReady: boolean;
 	surveyCompleted: boolean;
 	birdName: string;
 	photos: Photo[];
