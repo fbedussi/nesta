@@ -21,7 +21,7 @@ export function Survey() {
 				<progress
 					className={styles["progress-bar"]}
 					max={5}
-					value={surveyCompletedQuestions + 1}
+					value={Math.min(5, surveyCompletedQuestions + 1)}
 				/>
 				<div className={styles["progress-text"]}>
 					{surveyCompletedQuestions + 1}/5
@@ -39,7 +39,7 @@ export function Survey() {
 				))}
 			</div>
 
-			{surveyCompletedQuestions === 100 && (
+			{surveyCompletedQuestions === 5 && (
 				<div>
 					<Link href="/loading">{t("proceed")}</Link>
 				</div>

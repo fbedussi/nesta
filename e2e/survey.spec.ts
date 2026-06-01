@@ -10,10 +10,10 @@ test.describe("survey page", () => {
 		await expect(page.getByText("Pensa al giorno in cui avrai")).toBeVisible();
 	});
 
-	test("the progress bar value is 0", async ({ page }) => {
+	test("the initial progress bar value is 1", async ({ page }) => {
 		await page.goto("http://localhost:5173/survey");
 		await expect(page.getByRole("progressbar")).toBeVisible();
-		await expect(page.getByRole("progressbar")).toHaveAttribute("value", "0");
+		await expect(page.getByRole("progressbar")).toHaveAttribute("value", "1");
 	});
 
 	test("answering the question make the progress bar value increase and at the end the cta is shown", async ({
@@ -23,18 +23,18 @@ test.describe("survey page", () => {
 		await expect(page.getByRole("link", { name: "prosegui" })).toHaveCount(0);
 
 		await page.getByText("Quando mi sento sotto").click();
-		await expect(page.getByRole("progressbar")).toHaveAttribute("value", "20");
+		await expect(page.getByRole("progressbar")).toHaveAttribute("value", "2");
 		await page.getByText("Sento l'impulso salire").click();
-		await expect(page.getByRole("progressbar")).toHaveAttribute("value", "40");
+		await expect(page.getByRole("progressbar")).toHaveAttribute("value", "3");
 
 		await page.getByText("Un forte senso di colpa,").click();
-		await expect(page.getByRole("progressbar")).toHaveAttribute("value", "60");
+		await expect(page.getByRole("progressbar")).toHaveAttribute("value", "4");
 
 		await page.getByText("È una cosa recente, iniziata").click();
-		await expect(page.getByRole("progressbar")).toHaveAttribute("value", "80");
+		await expect(page.getByRole("progressbar")).toHaveAttribute("value", "5");
 
 		await page.getByText("Poter gesticolare e parlare").click();
-		await expect(page.getByRole("progressbar")).toHaveAttribute("value", "100");
+		await expect(page.getByRole("progressbar")).toHaveAttribute("value", "5");
 
 		await expect(page.getByRole("link", { name: "prosegui" })).toBeVisible();
 	});
