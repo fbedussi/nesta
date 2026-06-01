@@ -1,9 +1,9 @@
 import styles from "./logo.module.css";
 
-export function Logo({ size }: { size: number }) {
+export function Logo({ size, iconOnly }: { size: number; iconOnly?: boolean }) {
 	return (
 		<div style={{ fontSize: `var(--font-size-${size})` }}>
-			<span className={styles.text}>NESTA</span> 🐦
+			{!iconOnly && <span className={styles.text}>NESTA </span>}🐦
 		</div>
 	);
 }

@@ -118,15 +118,9 @@ export const selectors = {
 	birdName: (state: Model) => state.birdName,
 	photos: (state: Model) => state.photos,
 	streak: (state: Model) => new Set([...state.photos.map(getShotDay)]).size,
-	surveyCompletedPercentage: (state: Model) => {
-		const answers = Object.values(state.surveyAnswers);
-		const totalQuestions = answers.length;
-		const answeredQuestions = answers.filter(
-			(answer) => answer !== null,
-		).length;
-
-		return Math.round((answeredQuestions / totalQuestions) * 100);
-	},
+	surveyCompletedQuestions: (state: Model) =>
+		Object.values(state.surveyAnswers).filter((answer) => answer !== null)
+			.length,
 	profile: (state: Model): Traits | undefined => {
 		const matrix: Record<string, Record<string, Traits>> = {
 			"1": {

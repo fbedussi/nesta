@@ -1,19 +1,32 @@
 import { useTranslation } from "react-i18next";
+import { Logo } from "../components/logo";
 import { Link } from "../router";
 import { actions, selectors, useStore } from "../store";
 import styles from "./survey.module.css";
 
 export function Survey() {
 	const { t } = useTranslation();
-	const surveyCompletedPercentage = useStore(
-		selectors.surveyCompletedPercentage,
-	);
+	const surveyCompletedQuestions = useStore(selectors.surveyCompletedQuestions);
 
 	const numberOfAnswersPerQuestion = [4, 4, 4, 3, 4];
 
 	return (
-		<div>
-			<p>{t("surveyTitle")}</p>
+		<div className={`page-wrapper ${styles.container}`}>
+			<div className={styles["title-wrapper"]}>
+				<Logo size={8} iconOnly />
+				<h1 className={styles.title}>{t("surveyTitle")}</h1>
+			</div>
+
+			<div className={styles.progress}>
+				<progress
+					className={styles["progress-bar"]}
+					max={5}
+					value={surveyCompletedQuestions + 1}
+				/>
+				<div className={styles["progress-text"]}>
+					{surveyCompletedQuestions + 1}/5
+				</div>
+			</div>
 
 			<div className={styles.questions}>
 				{numberOfAnswersPerQuestion.map((numberOfAnswers, index) => (
@@ -26,11 +39,7 @@ export function Survey() {
 				))}
 			</div>
 
-			<div>
-				<progress max={100} value={surveyCompletedPercentage} />
-			</div>
-
-			{surveyCompletedPercentage === 100 && (
+			{surveyCompletedQuestions === 100 && (
 				<div>
 					<Link href="/loading">{t("proceed")}</Link>
 				</div>
