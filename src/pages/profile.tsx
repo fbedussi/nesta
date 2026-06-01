@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import type { Traits } from "../model";
-import { Link } from "../router";
+import { Link, navigate } from "../router";
 import { actions, selectors, useStore } from "../store";
+import styles from "./profile.module.css";
+import { Logo } from "../components/logo";
 
 const percentageMap: Record<Traits, number> = {
 	stress: 48,
@@ -16,27 +18,34 @@ export function Profile() {
 	const profile = useStore(selectors.profile);
 
 	useEffect(() => {
-		actions.setSurveyCompleted();
-	}, []);
+		if (profile) {
+			actions.setSurveyCompleted();
+		} else {
+			navigate("/intro");
+		}
+	}, [profile]);
 
 	return (
-		<div>
-			<h1>Profilo</h1>
+		<div className={`page-wrapper ${styles.container}`}>
+			<h1 className={styles.title}>{t("profileTitle")}</h1>
 
-			{!profile ? (
-				<div>{t("profileNotFound")}</div>
-			) : (
-				<>
-					<div>{t(`profile_${profile}_description`)}</div>
-					<div>{t(`profile_${profile}_message`)}</div>
-					<div>
-						{t(`percentageOfPeople`)} {percentageMap[profile]}%
-					</div>
-				</>
-			)}
+			<div className={styles.description}>
+				{t(`profile_${profile}_description`)}
+			</div>
 
-			<div>
-				<Link href="/">{t("letsStart")}</Link>
+			<div className={styles.percentage}>
+				{t(`percentageOfPeople`)} {profile && percentageMap[profile]}%
+			</div>
+
+			<div className={styles["message-wrapper"]}>
+				<Logo size={8} iconOnly />
+				<div className={styles.message}>{t(`profile_${profile}_message`)}</div>
+			</div>
+
+			<div className={styles["cta-wrapper"]}>
+				<Link href="/" className="btn">
+					{t("letsStart")}
+				</Link>
 			</div>
 		</div>
 	);

@@ -47,6 +47,7 @@
 
 	"loading": "stiamo elaborando i dati",
 
+	"profileTitle": "Il tuo profilo",
 	"profile_stress_description": "Le tue mani si muovono quando la tua mente corre veloce. Quando la pressione aumenta o devi concentrarti intensamente, il tuo corpo cerca una valvola di sfogo per scaricare l'energia. Significa solo che hai un'anima sensibile, che elabora il mondo in modo profondo.",
 	"profile_stress_message": "La tua mente fa grandi cose, ma a volte si sovraccarica. Da oggi ci sono io qui a ricordarti di respirare e a proteggere le tue mani mentre tu pensi.",
 	"profile_automatic_description": "Per te il gesto è un viaggio silenzioso di cui spesso non ti accorgi. Succede nei momenti di vuoto o noia. Le tue mani vanno 'in avanscoperta' da sole quando l'attenzione si abbassa, trasformando il relax in un automatismo inconscio.",
@@ -57,7 +58,7 @@
 	"percentageOfPeople": "percentuale di persone",
 	"profileNotFound": "profilo non trovato",
 	"yourAttentionToDetails": "La tua attenzione ai dettagli è un superpotere. Da oggi la useremo per nutrire e curare la pelle, invece di limarla con i denti. Ricostruiamo insieme!",
-	"letsStar": "iniziamo",
+	"letsStart": "iniziamo",
 
 	"changeImage": "scatta una nuova foto",
 	"pickImage": "scatta una foto",

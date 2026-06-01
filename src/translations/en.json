@@ -47,6 +47,7 @@
 
 	"loading": "we are processing the data",
 
+	"profileTitle": "Your profile",
 	"profile_stress_description": "Your hands move when your mind runs fast. When pressure increases or you have to concentrate intensely, your body looks for a vent to release the energy. It just means you have a sensitive soul, that processes the world in a deep way.",
 	"profile_stress_message": "Your mind does great things, but sometimes it gets overloaded. From now on I'm here to remind you to breathe and protect your hands while you think.",
 	"profile_automatic_description": "For you, the gesture is a silent journey that you often don't even notice. It happens in moments of emptiness or boredom. Your hands go 'exploring' on their own when attention drops, turning relaxation into an unconscious automatism.",
@@ -58,7 +59,7 @@
 	"profileNotFound": "profile not found",
 	"yourAttentionToDetails": "Your attention to detail is a superpower. From now on we will use it to nourish and care for the skin, instead of filing it with your teeth. Let's rebuild together!",
 
-	"letsStar": "let's start",
+	"letsStart": "let's start",
 	"changeImage": "take a new photo",
 	"pickImage": "take a photo",
 	"save": "save",
