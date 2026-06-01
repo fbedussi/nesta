@@ -16,7 +16,7 @@ test.describe("survey page", () => {
 		await expect(page.getByRole("progressbar")).toHaveAttribute("value", "1");
 	});
 
-	test("answering the question make the progress bar value increase and at the end the cta is shown", async ({
+	test("answering the question make the progress bar value increase and at the end the loading page is shown", async ({
 		page,
 	}) => {
 		await page.goto("http://localhost:5173/survey");
@@ -34,20 +34,7 @@ test.describe("survey page", () => {
 		await expect(page.getByRole("progressbar")).toHaveAttribute("value", "5");
 
 		await page.getByText("Poter gesticolare e parlare").click();
-		await expect(page.getByRole("progressbar")).toHaveAttribute("value", "5");
 
-		await expect(page.getByRole("link", { name: "prosegui" })).toBeVisible();
-	});
-
-	test("the cta leads to the loading page", async ({ page }) => {
-		await page.goto("http://localhost:5173/survey");
-
-		await page.getByText("Quando mi sento sotto").click();
-		await page.getByText("Sento l'impulso salire").click();
-		await page.getByText("Un forte senso di colpa,").click();
-		await page.getByText("È una cosa recente, iniziata").click();
-		await page.getByText("Poter gesticolare e parlare").click();
-		await page.getByRole("link", { name: "prosegui" }).click();
 		await expect(page).toHaveURL(/\/loading/);
 	});
 });

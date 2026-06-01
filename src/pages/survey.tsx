@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Logo } from "../components/logo";
-import { Link } from "../router";
+import { navigate } from "../router";
 import { actions, selectors, useStore } from "../store";
 import styles from "./survey.module.css";
 
@@ -9,6 +10,12 @@ export function Survey() {
 	const surveyCompletedQuestions = useStore(selectors.surveyCompletedQuestions);
 
 	const numberOfAnswersPerQuestion = [4, 4, 4, 3, 4];
+
+	useEffect(() => {
+		if (surveyCompletedQuestions === 5) {
+			navigate("/loading");
+		}
+	}, [surveyCompletedQuestions]);
 
 	return (
 		<div className={`page-wrapper ${styles.container}`}>
@@ -35,23 +42,22 @@ export function Survey() {
 						key={index}
 						questionId={index + 1}
 						numberOfAnswers={numberOfAnswers}
+						className={
+							index === surveyCompletedQuestions ? "active" : undefined
+						}
 					/>
 				))}
 			</div>
-
-			{surveyCompletedQuestions === 5 && (
-				<div>
-					<Link href="/loading">{t("proceed")}</Link>
-				</div>
-			)}
 		</div>
 	);
 }
 
 function Question({
+	className,
 	questionId,
 	numberOfAnswers,
 }: {
+	className?: string;
 	questionId: number;
 	numberOfAnswers: number;
 }) {
@@ -59,14 +65,14 @@ function Question({
 	const answers = new Array(numberOfAnswers).fill(undefined);
 
 	return (
-		<div>
+		<div className={[className, styles["question-wrapper"]].join(" ")}>
 			<div className={styles.question}>
 				{t(`question${questionId}_question`)}
 			</div>
 			<div className={styles.answers}>
 				{answers.map((_, answerId) => (
 					// biome-ignore lint/suspicious/noArrayIndexKey: the position is the right id
-					<label key={answerId}>
+					<label key={answerId} className={styles.answer}>
 						<input
 							type="radio"
 							name={`question${questionId}_answer`}
