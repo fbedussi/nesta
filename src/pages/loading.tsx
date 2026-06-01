@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { Logo } from "../components/logo";
 import { navigate } from "../router";
+import styles from "./loading.module.css";
 
 export function Loading() {
 	const { t } = useTranslation();
@@ -13,9 +15,12 @@ export function Loading() {
 	}, []);
 
 	return (
-		<div>
-			<h1>loading</h1>
-			<progress aria-label={t("loading")}></progress>
+		<div className={`page-wrapper ${styles.container}`}>
+			<div className={styles["loader-and-logo"]}>
+				<div className={styles.loader}></div>
+				<Logo size={8} iconOnly />
+			</div>
+			<h1 className={styles.title}>{t("loading")}</h1>
 		</div>
 	);
 }

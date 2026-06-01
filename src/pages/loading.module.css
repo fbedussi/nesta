@@ -1,0 +1,46 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	align-items: center;
+	justify-content: center;
+	gap: var(--size-3);
+}
+
+.loader-and-logo {
+	position: relative;
+
+	> *:last-child {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+.loader {
+	width: var(--size-fluid-9);
+	height: var(--size-fluid-9);
+	border: var(--size-3) solid var(--accent-color);
+	border-bottom-color: transparent;
+	border-radius: var(--radius-round);
+	display: inline-block;
+	box-sizing: border-box;
+	animation: rotation 1s linear infinite;
+}
+
+.title {
+	color: var(--brown-7);
+	font-size: var(--font-size-1);
+	text-transform: uppercase;
+	font-weight: var(--font-weight-7);
+}
+
+@keyframes rotation {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
