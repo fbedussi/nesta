@@ -4,6 +4,7 @@ import { Menu } from "../components/menu";
 import { resizeImage } from "../libs/image";
 import type { Hand } from "../model";
 import { actions } from "../store";
+import styles from "./take-photo.module.css";
 
 export function TakePhoto() {
 	const { t } = useTranslation();
@@ -19,72 +20,81 @@ export function TakePhoto() {
 	const today = new Date().toISOString().split("T")[0];
 
 	return (
-		<div>
-			<h1>{t("take photo")}</h1>
+		<div className="page-wrapper outer-page-container">
+			<div className="inner-page-container">
+				<h1 className="visually-hidden">{t("take photo")}</h1>
 
-			<form
-				onSubmit={() => {
-					actions.addPhoto({
-						url: imageSrc,
-						alt: t("handImage", { hand, day: today }),
-						date: today,
-						hand,
-					});
-				}}
-			>
-				<fieldset>
-					<label>
-						<input
-							type="radio"
-							name="hand"
-							value="left"
-							onChange={() => setHand("left")}
-							checked={hand === "left"}
-						/>
-						<span>{t("left")}</span>
-					</label>
-					<label>
-						<input
-							type="radio"
-							name="hand"
-							value="right"
-							onChange={() => setHand("right")}
-							checked={hand === "right"}
-						/>
-						<span>{t("right")}</span>
-					</label>
-				</fieldset>
-				<input
-					hidden
-					ref={imageInputRef}
-					type="file"
-					accept="image/*"
-					onChange={async (e) => {
-						const file = e.currentTarget.files?.[0];
-						if (!file) {
-							throw new Error("No image file");
-						}
+				<img src={imageSrc} alt="" className={styles.photo} />
 
-						const resizedImage = await resizeImage(file, 960, 960);
-
-						setImageFile(resizedImage);
-						const src = URL.createObjectURL(resizedImage);
-						setImageSrc(src);
+				<form
+					className={styles.form}
+					onSubmit={() => {
+						actions.addPhoto({
+							url: imageSrc,
+							alt: t("handImage", { hand, day: today }),
+							date: today,
+							hand,
+						});
 					}}
-				/>
+				>
+					<fieldset className="switch">
+						<label>
+							<input
+								type="radio"
+								name="hand"
+								value="left"
+								onClick={() => setHand("left")}
+								checked={hand === "left"}
+							/>
+							<span>{t("left")}</span>
+						</label>
+						<label>
+							<input
+								type="radio"
+								name="hand"
+								value="right"
+								onClick={() => setHand("right")}
+								checked={hand === "right"}
+							/>
+							<span>{t("right")}</span>
+						</label>
+					</fieldset>
+					<input
+						hidden
+						ref={imageInputRef}
+						type="file"
+						accept="image/*"
+						onChange={async (e) => {
+							const file = e.currentTarget.files?.[0];
+							if (!file) {
+								throw new Error("No image file");
+							}
 
-				<div>
-					<button type="button" onClick={() => imageInputRef.current?.click()}>
-						{t(imageSrc ? "changeImage" : "pickImage")}
-					</button>
-				</div>
-				<img src={imageSrc} alt="" />
-				<div>
-					<button type="submit" disabled={disableSaveButton}>
-						{t("save")}
-					</button>
-				</div>
-			</form>
+							const resizedImage = await resizeImage(file, 960, 960);
+
+							setImageFile(resizedImage);
+							const src = URL.createObjectURL(resizedImage);
+							setImageSrc(src);
+						}}
+					/>
+
+					<div>
+						<button
+							className={styles["shutter-btn"]}
+							type="button"
+							onClick={() => imageInputRef.current?.click()}
+							aria-label={t(imageSrc ? "changeImage" : "pickImage")}
+						>
+							📸
+						</button>
+					</div>
+					<div>
+						<button type="submit" disabled={disableSaveButton} className="btn">
+							{t("save")}
+						</button>
+					</div>
+				</form>
+			</div>
 
 			<Menu />
 		</div>

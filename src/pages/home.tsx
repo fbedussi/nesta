@@ -21,20 +21,22 @@ export function Home() {
 	}, [surveyCompleted]);
 
 	return (
-		<div className={`page-wrapper ${styles.container}`}>
-			<Logo size={8} iconOnly />
-			<label className={styles.form}>
-				<div className={styles.title}>{t("nameYourBird")}</div>
-				<input
-					type="text"
-					placeholder={t("birdNamePlaceholder")}
-					value={birdName}
-					onChange={(ev) => actions.setBirdName(ev.currentTarget.value)}
-					className={styles.input}
-				/>
-			</label>
-			<div className={styles.streak}>
-				{t("streak")}: {streak}
+		<div className="page-wrapper outer-page-container">
+			<div className="inner-page-container">
+				<Logo size={8} iconOnly />
+				<label className={styles.form}>
+					<div className={styles.title}>{t("nameYourBird")}</div>
+					<input
+						type="text"
+						placeholder={t("birdNamePlaceholder")}
+						value={birdName}
+						onChange={(ev) => actions.setBirdName(ev.currentTarget.value)}
+						className={styles.input}
+					/>
+				</label>
+				<div className={styles.streak}>
+					{t("streak")}: {streak}
+				</div>
 			</div>
 			<Menu />
 		</div>
