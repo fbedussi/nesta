@@ -96,7 +96,7 @@ const initialState: Model = {
 	},
 };
 
-export const useStore = create<
+export const useStore2 = create<
 	Model,
 	[["zustand/persist", unknown], ["zustand/devtools", never]]
 >(
@@ -119,9 +119,9 @@ export const useStore = create<
 	),
 );
 
-// export const useStore = create<Model, [["zustand/devtools", never]]>(
-// 	devtools(() => ({...initialState, storeReady: true})),
-// );
+export const useStore = create<Model, [["zustand/devtools", never]]>(
+	devtools(() => ({ ...initialState, storeReady: true })),
+);
 
 export const selectors = {
 	ready: (state: Model) => state.storeReady,
