@@ -24,7 +24,11 @@ export function TakePhoto() {
 			<div className="inner-page-container">
 				<h1 className="visually-hidden">{t("take photo")}</h1>
 
-				<img src={imageSrc} alt="" className={styles.photo} />
+				{imageSrc ? (
+					<img src={imageSrc} alt="" className={styles.photo} />
+				) : (
+					<div className={styles.photo}></div>
+				)}
 
 				<form
 					className={styles.form}
@@ -38,26 +42,24 @@ export function TakePhoto() {
 					}}
 				>
 					<fieldset className="switch">
-						<label>
-							<input
-								type="radio"
-								name="hand"
-								value="left"
-								onClick={() => setHand("left")}
-								checked={hand === "left"}
-							/>
-							<span>{t("left")}</span>
-						</label>
-						<label>
-							<input
-								type="radio"
-								name="hand"
-								value="right"
-								onClick={() => setHand("right")}
-								checked={hand === "right"}
-							/>
-							<span>{t("right")}</span>
-						</label>
+						<label htmlFor="left">{t("left")}</label>
+						<input
+							id="left"
+							type="radio"
+							name="hand"
+							value="left"
+							onChange={() => setHand("left")}
+							checked={hand === "left"}
+						/>
+						<label htmlFor="right">{t("right")}</label>
+						<input
+							id="right"
+							type="radio"
+							name="hand"
+							value="right"
+							onChange={() => setHand("right")}
+							checked={hand === "right"}
+						/>
 					</fieldset>
 					<input
 						hidden

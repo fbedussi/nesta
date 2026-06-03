@@ -1,6 +1,7 @@
 .photo {
 	aspect-ratio: var(--ratio-square);
 	width: 100%;
+	max-width: var(--size-px-15);
 	background-color: white;
 	border: none;
 	object-fit: cover;
