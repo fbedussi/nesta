@@ -1,11 +1,42 @@
+.photo-wrapper {
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--radius-3);
+}
+
 .photo {
+	display: block;
 	aspect-ratio: var(--ratio-square);
 	width: 100%;
 	max-width: var(--size-px-15);
 	background-color: white;
 	border: none;
 	object-fit: cover;
-	border-radius: var(--radius-3);
+}
+
+.date {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	color: white;
+	background-color: hsl(var(--gray-9-hsl) / 60%);
+	padding: var(--size-2);
+	text-align: center;
+	font-weight: var(--font-weight-7);
+}
+
+.slider {
+	width: 100%; /* Full-width */
+	max-width: var(--size-px-15);
+	background: var(--orange-4);
+	border-radius: var(--radius-round);
+
+	&::-webkit-slider-thumb,
+	&::-moz-range-thumb {
+		background: var(--accent-color);
+		cursor: pointer;
+	}
 }
 
 .form {

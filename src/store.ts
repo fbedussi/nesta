@@ -84,7 +84,7 @@ function createIndexedDBStorage<S>(
 
 const initialState: Model = {
 	storeReady: false,
-	surveyCompleted: false,
+	surveyCompleted: true,
 	birdName: "",
 	photos: [],
 	surveyAnswers: {
