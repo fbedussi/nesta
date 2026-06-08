@@ -123,3 +123,61 @@ body {
 		transform: translateX(calc(100% + var(--size-1)));
 	}
 }
+
+@keyframes move-out-forward {
+	from {
+		transform: translateX(0%);
+	}
+
+	to {
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes move-in-forward {
+	from {
+		transform: translateX(100%);
+	}
+
+	to {
+		transform: translateX(0%);
+	}
+}
+
+@keyframes move-out-back {
+	from {
+		transform: translateX(0%);
+	}
+
+	to {
+		transform: translateX(100%);
+	}
+}
+
+@keyframes move-in-back {
+	from {
+		transform: translateX(-100%);
+	}
+
+	to {
+		transform: translateX(0%);
+	}
+}
+
+html:active-view-transition-type(forward) {
+	&::view-transition-old(root) {
+		animation: var(--duration-gentle-1) ease-in both move-out-forward;
+	}
+	&::view-transition-new(root) {
+		animation: var(--duration-gentle-1) ease-in both move-in-forward;
+	}
+}
+
+html:active-view-transition-type(back) {
+	&::view-transition-old(root) {
+		animation: var(--duration-gentle-1) ease-in both move-out-back;
+	}
+	&::view-transition-new(root) {
+		animation: var(--duration-gentle-1) ease-in both move-in-back;
+	}
+}

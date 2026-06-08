@@ -5,8 +5,10 @@ export function Journey() {
 	const { t } = useTranslation();
 
 	return (
-		<div>
-			<h1>{t("journey")}</h1>
+		<div className="page-wrapper outer-page-container">
+			<div className="inner-page-container">
+				<h1>{t("journey")}</h1>
+			</div>
 			<Menu />
 		</div>
 	);

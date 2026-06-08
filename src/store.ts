@@ -84,7 +84,7 @@ function createIndexedDBStorage<S>(
 
 const initialState: Model = {
 	storeReady: false,
-	surveyCompleted: true,
+	surveyCompleted: false,
 	birdName: "",
 	photos: [],
 	surveyAnswers: {
@@ -96,7 +96,7 @@ const initialState: Model = {
 	},
 };
 
-export const useStore2 = create<
+export const useStore = create<
 	Model,
 	[["zustand/persist", unknown], ["zustand/devtools", never]]
 >(
@@ -119,7 +119,7 @@ export const useStore2 = create<
 	),
 );
 
-export const useStore = create<Model, [["zustand/devtools", never]]>(
+export const useStore2 = create<Model, [["zustand/devtools", never]]>(
 	devtools(() => ({ ...initialState, storeReady: true })),
 );
 

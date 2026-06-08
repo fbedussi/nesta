@@ -15,6 +15,7 @@
 .input {
 	border-radius: var(--radius-3);
 	padding: var(--size-2);
+	field-sizing: content;
 }
 
 .streak {

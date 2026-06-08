@@ -14,17 +14,17 @@ import { selectors, useStore } from "./store";
 
 type RouteComponent = React.ComponentType;
 
-const routes: Record<string, RouteComponent> = {
-	"/": Home,
-	"/home": Home,
-	"/intro": Intro,
-	"/survey": Survey,
-	"/loading": Loading,
-	"/profile": Profile,
-	"/birth": Birth,
-	"/journey": Journey,
-	"/sos": Sos,
-	"/take-photo": TakePhoto,
+const routes: Record<string, { page: RouteComponent; order: number }> = {
+	"/": { page: Home, order: 6 },
+	"/home": { page: Home, order: 6 },
+	"/intro": { page: Intro, order: 1 },
+	"/survey": { page: Survey, order: 2 },
+	"/loading": { page: Loading, order: 3 },
+	"/profile": { page: Profile, order: 4 },
+	"/birth": { page: Birth, order: 5 },
+	"/journey": { page: Journey, order: 7 },
+	"/sos": { page: Sos, order: 8 },
+	"/take-photo": { page: TakePhoto, order: 9 },
 };
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -65,7 +65,8 @@ export function Router() {
 		navigation.addEventListener(
 			"navigate",
 			(event: NavigateEvent) => {
-				const url = new URL(event.destination.url);
+				const sourceUrl = new URL(window.location.href);
+				const destinationUrl = new URL(event.destination.url);
 
 				if (
 					!event.canIntercept ||
@@ -77,7 +78,21 @@ export function Router() {
 
 				event.intercept({
 					handler: async () => {
-						setPathname(stripBase(url.pathname));
+						const destinationPathname = stripBase(destinationUrl.pathname);
+						const changePage = () => setPathname(destinationPathname);
+						if (!document.startViewTransition) {
+							changePage();
+						} else {
+							const sourcePathname = stripBase(sourceUrl.pathname);
+							const type =
+								routes[destinationPathname].order < routes[sourcePathname].order
+									? "back"
+									: "forward";
+							document.startViewTransition({
+								update: changePage,
+								types: [type],
+							});
+						}
 					},
 				});
 			},
@@ -87,7 +102,7 @@ export function Router() {
 		return () => controller.abort();
 	}, []);
 
-	const Page = routes[pathname] ?? NotFound;
+	const Page = routes[pathname].page ?? NotFound;
 
 	return ready ? <Page /> : <LoadingApp />;
 }

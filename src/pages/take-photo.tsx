@@ -52,18 +52,21 @@ export function TakePhoto() {
 				)}
 
 				{!!numberOfSavedPhotos && selectedPhoto && (
-					<input
-						type="range"
-						min="1"
-						max={numberOfSavedPhotos}
-						value={selectedPhoto.toString()}
-						onChange={(ev) => {
-							const newlySelectedPhoto = Number(ev.currentTarget.value);
-							setSelectedPhoto(newlySelectedPhoto);
-							setImageSrc(photosByHand[newlySelectedPhoto - 1]?.url);
-						}}
-						className={styles.slider}
-					/>
+					<label className={styles["slider-label"]}>
+						{t("scrollPhotos")}
+						<input
+							type="range"
+							min="1"
+							max={numberOfSavedPhotos}
+							value={selectedPhoto.toString()}
+							onChange={(ev) => {
+								const newlySelectedPhoto = Number(ev.currentTarget.value);
+								setSelectedPhoto(newlySelectedPhoto);
+								setImageSrc(photosByHand[newlySelectedPhoto - 1]?.url);
+							}}
+							className={styles.slider}
+						/>
+					</label>
 				)}
 
 				<form
