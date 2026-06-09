@@ -104,7 +104,7 @@ export const useStore = create<
 		devtools(() => initialState),
 		{
 			name: "nesta-store",
-			version: 0.1,
+			version: 0.2,
 			storage: createIndexedDBStorage("nesta-db", "nesta-idb-store"),
 			onRehydrateStorage: () => {
 				return (state, error) => {
