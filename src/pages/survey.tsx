@@ -76,8 +76,8 @@ function Question({
 						<input
 							type="radio"
 							name={`question${questionId}_answer`}
-							onChange={() => {
-								actions.setSurveyAnswer(questionId, answerId + 1);
+							onChange={async () => {
+								await actions.setSurveyAnswer(questionId, answerId + 1);
 							}}
 						/>
 						<span>{t(`question${questionId}_answer${answerId + 1}`)}</span>

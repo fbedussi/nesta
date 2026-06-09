@@ -2,67 +2,75 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Menu } from "../components/menu";
 import { resizeImage } from "../libs/image";
+import { formatDate } from "../libs/time";
 import type { Hand } from "../model";
 import { actions, selectors, useStore } from "../store";
 import styles from "./take-photo.module.css";
-import { formatDate } from "../libs/time";
 
 export function TakePhoto() {
 	const { t } = useTranslation();
 
 	const [hand, setHand] = useState<Hand>("left");
-	const [imageSrc, setImageSrc] = useState<string>("");
-	const [imageFile, setImageFile] = useState<File | null>(null);
+	const [uploadedImageFile, setUploadedImageFile] = useState<File | null>(null);
 
-	const photos = useStore(selectors.photos);
-	const photosByHand = photos.filter((photo) => photo.hand === hand);
-	const numberOfSavedPhotos = photosByHand.length;
-	const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
+	const savedPhotos = useStore(selectors.photos);
+	const savedPhotosByHand = savedPhotos.filter((photo) => photo.hand === hand);
+	const numberOfSavedPhotos = savedPhotosByHand.length;
+	const [selectedSavedPhoto, setSelectedSAvedPhoto] = useState<number | null>(
+		null,
+	);
 
-	// auto select last added photo
+	// auto select last added/loaded photo
 	useEffect(() => {
-		setSelectedPhoto(numberOfSavedPhotos);
+		setSelectedSAvedPhoto(numberOfSavedPhotos);
 	}, [numberOfSavedPhotos]);
 
-	const disableSaveButton = !imageFile;
+	const disableSaveButton = !uploadedImageFile;
 
 	const imageInputRef = useRef<HTMLInputElement>(null);
 
 	const today = new Date().toISOString().split("T")[0];
 
-	const url =
-		imageSrc || (!!selectedPhoto && photosByHand[selectedPhoto - 1]?.url);
+	const imageFile =
+		uploadedImageFile ||
+		(!!selectedSavedPhoto &&
+			!!savedPhotosByHand[selectedSavedPhoto - 1] &&
+			savedPhotosByHand[selectedSavedPhoto - 1].file);
 
 	return (
 		<div className="page-wrapper outer-page-container">
 			<div className="inner-page-container">
 				<h1 className="visually-hidden">{t("take photo")}</h1>
 
-				{url ? (
+				{imageFile ? (
 					<div className={styles["photo-wrapper"]}>
-						<img src={url} alt="" className={styles.photo} />
-						{!!selectedPhoto && (
-							<div className={styles.date}>
-								{formatDate(photosByHand[selectedPhoto - 1]?.date)}
-							</div>
-						)}
+						<img
+							src={URL.createObjectURL(imageFile)}
+							alt=""
+							className={styles.photo}
+						/>
+						{!!selectedSavedPhoto &&
+							!!savedPhotosByHand[selectedSavedPhoto - 1] && (
+								<div className={styles.date}>
+									{formatDate(savedPhotosByHand[selectedSavedPhoto - 1].date)}
+								</div>
+							)}
 					</div>
 				) : (
 					<div className={styles.photo}></div>
 				)}
 
-				{!!numberOfSavedPhotos && selectedPhoto && (
+				{!!numberOfSavedPhotos && selectedSavedPhoto && (
 					<label className={styles["slider-label"]}>
-						{t("scrollPhotos")}
+						{t("scrollPhotos", { numberOfPhotos: numberOfSavedPhotos })}
 						<input
 							type="range"
 							min="1"
 							max={numberOfSavedPhotos}
-							value={selectedPhoto.toString()}
+							value={selectedSavedPhoto.toString()}
 							onChange={(ev) => {
 								const newlySelectedPhoto = Number(ev.currentTarget.value);
-								setSelectedPhoto(newlySelectedPhoto);
-								setImageSrc(photosByHand[newlySelectedPhoto - 1]?.url);
+								setSelectedSAvedPhoto(newlySelectedPhoto);
 							}}
 							className={styles.slider}
 						/>
@@ -71,15 +79,19 @@ export function TakePhoto() {
 
 				<form
 					className={styles.form}
-					onSubmit={() => {
-						actions.addPhoto({
-							url: imageSrc,
+					onSubmit={async (ev) => {
+						ev.preventDefault();
+
+						if (!uploadedImageFile) {
+							throw new Error("missing image file");
+						}
+						await actions.addPhoto({
+							file: uploadedImageFile,
 							alt: t("handImage", { hand, day: today }),
 							date: today,
 							hand,
 						});
-						setImageFile(null);
-						setImageSrc("");
+						setUploadedImageFile(null);
 					}}
 				>
 					<fieldset className="switch">
@@ -115,9 +127,7 @@ export function TakePhoto() {
 
 							const resizedImage = await resizeImage(file, 960, 960);
 
-							setImageFile(resizedImage);
-							const src = URL.createObjectURL(resizedImage);
-							setImageSrc(src);
+							setUploadedImageFile(resizedImage);
 						}}
 					/>
 
@@ -126,7 +136,7 @@ export function TakePhoto() {
 							className={styles["shutter-btn"]}
 							type="button"
 							onClick={() => imageInputRef.current?.click()}
-							aria-label={t(imageSrc ? "changeImage" : "pickImage")}
+							aria-label={t(uploadedImageFile ? "changeImage" : "pickImage")}
 						>
 							📸
 						</button>

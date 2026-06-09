@@ -195,11 +195,11 @@ export const selectors = {
 };
 
 export const actions = {
-	setSurveyCompleted: () => useStore.setState({ surveyCompleted: true }),
-	setBirdName: (name: string) => useStore.setState({ birdName: name }),
-	addPhoto: (photo: Photo) =>
+	setSurveyCompleted: async () => useStore.setState({ surveyCompleted: true }),
+	setBirdName: async (name: string) => useStore.setState({ birdName: name }),
+	addPhoto: async (photo: Photo) =>
 		useStore.setState((state) => ({ photos: [...state.photos, photo] })),
-	setSurveyAnswer: (questionId: number, answerId: number) =>
+	setSurveyAnswer: async (questionId: number, answerId: number) =>
 		useStore.setState((state) => ({
 			surveyAnswers: {
 				...state.surveyAnswers,

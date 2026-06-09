@@ -13,7 +13,7 @@ export type Model = {
 };
 
 export type Photo = {
-	url: string;
+	file: File;
 	alt: string;
 	date: ISODateString;
 	hand: Hand;

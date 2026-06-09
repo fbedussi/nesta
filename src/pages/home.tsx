@@ -30,7 +30,9 @@ export function Home() {
 						type="text"
 						placeholder={t("birdNamePlaceholder")}
 						value={birdName}
-						onChange={(ev) => actions.setBirdName(ev.currentTarget.value)}
+						onChange={async (ev) =>
+							await actions.setBirdName(ev.currentTarget.value)
+						}
 						className={styles.input}
 					/>
 				</label>
