@@ -10,6 +10,8 @@
 	"birdNamePlaceholder": "Bird Name",
 	"home": "Home",
 	"nameYourBird": "Name your bird",
+	"nameHint": "Remember that you can change it later",
+	"confirm": "confirm",
 
 	"promise1": "If today you had a bad moment, it doesn't change anything for us. Relapses are part of the journey. Nesta doesn't punish you, it welcomes you.",
 	"promise2": "Forget about impossible goals or stressful challenges like \"a month without touching your hands\". We will work on small daily milestones, one day at a time.",

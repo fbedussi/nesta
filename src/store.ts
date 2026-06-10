@@ -84,7 +84,6 @@ function createIndexedDBStorage<S>(
 
 const initialState: Model = {
 	storeReady: false,
-	surveyCompleted: false,
 	birdName: "",
 	photos: [],
 	surveyAnswers: {
@@ -104,7 +103,7 @@ export const useStore = create<
 		devtools(() => initialState),
 		{
 			name: "nesta-store",
-			version: 0.2,
+			version: 0.3,
 			storage: createIndexedDBStorage("nesta-db", "nesta-idb-store"),
 			onRehydrateStorage: () => {
 				return (state, error) => {
@@ -125,7 +124,8 @@ export const useStore2 = create<Model, [["zustand/devtools", never]]>(
 
 export const selectors = {
 	ready: (state: Model) => state.storeReady,
-	surveyCompleted: (state: Model) => state.surveyCompleted,
+	surveyCompleted: (state: Model) =>
+		Object.values(state.surveyAnswers).every((answer) => answer !== null),
 	birdName: (state: Model) => state.birdName,
 	photos: (state: Model) => state.photos,
 	streak: (state: Model) => new Set([...state.photos.map(getShotDay)]).size,

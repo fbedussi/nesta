@@ -57,7 +57,7 @@ export function TakePhoto() {
 							)}
 					</div>
 				) : (
-					<div className={styles.photo}></div>
+					<div className={styles["photo-wrapper"]}></div>
 				)}
 
 				{!!numberOfSavedPhotos && selectedSavedPhoto && (
