@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { Logo } from "../components/logo";
 import type { Traits } from "../model";
 import { Link, navigate } from "../router";
-import { actions, selectors, useStore } from "../store";
+import { selectors, useStore } from "../store";
 import styles from "./profile.module.css";
-import { Logo } from "../components/logo";
 
 const percentageMap: Record<Traits, number> = {
 	stress: 48,
@@ -18,9 +18,7 @@ export function Profile() {
 	const profile = useStore(selectors.profile);
 
 	useEffect(() => {
-		if (profile) {
-			actions.setSurveyCompleted();
-		} else {
+		if (!profile) {
 			navigate("/intro");
 		}
 	}, [profile]);

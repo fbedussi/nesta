@@ -4,7 +4,7 @@ import type { Model } from "./model.ts";
 import { selectors } from "./store.ts";
 
 const baseState: Model = {
-	surveyCompleted: false,
+	storeReady: true,
 	birdName: "",
 	photos: [],
 	surveyAnswers: { "1": null, "2": null, "3": null, "4": null, "5": null },

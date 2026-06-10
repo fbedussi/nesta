@@ -195,7 +195,6 @@ export const selectors = {
 };
 
 export const actions = {
-	setSurveyCompleted: async () => useStore.setState({ surveyCompleted: true }),
 	setBirdName: async (name: string) => useStore.setState({ birdName: name }),
 	addPhoto: async (photo: Photo) =>
 		useStore.setState((state) => ({ photos: [...state.photos, photo] })),
