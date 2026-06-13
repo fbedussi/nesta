@@ -43,7 +43,9 @@ export function Survey() {
 						questionId={index + 1}
 						numberOfAnswers={numberOfAnswers}
 						className={
-							index === surveyCompletedQuestions ? "active" : undefined
+							index === surveyCompletedQuestions
+								? styles.active
+								: styles.inactive
 						}
 					/>
 				))}

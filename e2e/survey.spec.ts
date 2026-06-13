@@ -5,7 +5,7 @@ test.describe("survey page", () => {
 		await page.goto("http://localhost:5173/survey");
 		await expect(page.getByText("Osserva le tue giornate: in")).toBeVisible();
 		await expect(page.getByText("Di solito, in quale preciso")).toBeVisible();
-		await expect(page.getByText("Cosa provi subito dopo haber")).toBeVisible();
+		await expect(page.getByText("Cosa provi subito dopo aver")).toBeVisible();
 		await expect(page.getByText("Da quanti anni questa")).toBeVisible();
 		await expect(page.getByText("Pensa al giorno in cui avrai")).toBeVisible();
 	});
